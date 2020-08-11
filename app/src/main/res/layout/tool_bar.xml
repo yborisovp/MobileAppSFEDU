@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    app:contentInsetStart="0dp"
+    android:id="@+id/tool_bar"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <RelativeLayout
+            android:id="@+id/upper_tool"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="Группа"
+                android:textColor="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorPrimaryDark"
+                android:src="@drawable/timetable_point" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/link"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/upper_tool"
+
+            android:background="@color/colorHead" >
+            <Spinner
+                android:id="@+id/days_of_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:entries="@array/dayofweek"
+                android:layout_marginLeft="5dp"
+                android:background="#00000000"
+                />
+
+            <Button
+                android:layout_height="35dp"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text = "Неделя"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/timetable_spinner_element"
+                android:textColor="#FFFFFF"
+
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>

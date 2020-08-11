@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Hope</string>
+    <string name = "Расписание">Расписание занятий группы *****-*</string>
+    <string name = "title"> День</string>
+    <string-array name="dayofweek">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+</resources>
