@@ -34,8 +34,6 @@ public class BaseActivity extends AppCompatActivity {
         //Устанавливаем tool_bar
         setToolbar();
 
-        
-
         Days = setDays(Days);
 
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
