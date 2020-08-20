@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_height="125dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorDarkestPrimary">
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:contentDescription="ICTIS logo"
+            android:src="@drawable/ictis_logo_white"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="190dp">
+
+        </ImageView>
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:contentDescription="ICTIS logo"
+            android:src="@drawable/sfedu_logo_white"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp">
+
+        </ImageView>
+
+    </RelativeLayout>
+
+    <!--<RelativeLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/colorText">
+
+    </RelativeLayout>-->
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </GridView>
+
+</LinearLayout>
