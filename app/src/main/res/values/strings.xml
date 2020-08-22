@@ -2,6 +2,11 @@
     <string name="app_name">Hope</string>
     <string name = "Расписание">Расписание занятий группы *****-*</string>
     <string name = "title"> День</string>
+    <string name="floor0_descr">Нулевой этаж/подвал</string>
+    <string name="floor1_descr">Первый этаж</string>
+    <string name="floor2_descr">Второй этаж</string>
+    <string name="floor3_descr">Третий этаж</string>
+    <string name="floor4_descr">Четвёртый этаж</string>
     <string-array name="dayofweek">
         <item>Понедельник</item>
         <item>Вторник</item>

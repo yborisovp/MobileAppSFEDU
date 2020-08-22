@@ -60,7 +60,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:background="@color/colorList"
-            android:id="@+id/floor0"
             android:contentDescription="@string/floor1_descr">
 
         </ImageButton>
@@ -86,6 +85,18 @@
             android:layout_marginTop="135dp"
             android:background="@color/colorList"
             android:contentDescription="@string/floor3_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_four"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="195dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor4_descr">
 
         </ImageButton>
 
