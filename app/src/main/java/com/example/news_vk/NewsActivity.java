@@ -1,8 +1,10 @@
 package com.example.news_vk;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,7 +13,21 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sfedymob.R;
+import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKCallback;
+import com.vk.sdk.VKSdk;
+import com.vk.sdk.api.VKApiConst;
+import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
+import com.vk.sdk.api.VKRequest;
+import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.methods.VKApiGroups;
+import com.vk.sdk.api.methods.VKApiWall;
+import com.vk.sdk.api.model.VKList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -35,7 +51,7 @@ import java.util.List;
 
 
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends Activity {
 
     //private CustomArrayAdapter adapter;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -43,121 +59,78 @@ public class NewsActivity extends AppCompatActivity {
     GridView grid;
     //private List<ListItemClass> arrayList;
 
+    ListView listView;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_grid_fragment);
-        grid = findViewById(R.id.news_grid_items);
-        
-        gridInit();
 
-    }
-    /*
-     *
-     *
-     *
-     *
-     *
-     * */
-    public void vkApiInit() {
+
+        VKSdk.login(this);
+        listView = (ListView)findViewById(R.id.listView);
 
     }
 
-    /*
-    *
-    *
-    *
-    *
-    *
-    * */
-    private void gridInit() {
-        grid = findViewById(R.id.news_grid_items);
-        get_posts();
-    }
-    /*private void init()
+    @Override
+    protected void onActivityResult(int reqeustCode, int resultCode, Intent data)
     {
-        ListView listView = findViewById(R.id.listView);
-        arrayList = new ArrayList<>();
-        adapter = new CustomArrayAdapter(this, R.layout.news_list_item, arrayList, getLayoutInflater());
-        listView.setAdapter(adapter);
-        Runnable runnable = new Runnable() {
+        if (!VKSdk.onActivityResult(reqeustCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
-            public void run() {
-                getWeb();
+            public void onResult(VKAccessToken res) {
+                VKRequest vkRequest = new VKApiGroups().getById(VKParameters.from("group_ids", "sed_announce"));
+                vkRequest.executeWithListener(new VKRequest.VKRequestListener() {
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        super.onComplete(response);
+
+                        VKList vkList = (VKList) response.parsedModel;
+                        try {
+
+                            for (int j =0; j<=300; j+=100) {
+                                VKRequest vkRequest1 = new VKApiWall().get(VKParameters.from(VKApiConst.OWNER_ID, "-" + vkList
+                                        .get(0).fields.getInt("id"), VKApiConst.COUNT, 100, VKApiConst.OFFSET, j));
+
+                                vkRequest1.executeWithListener(new VKRequest.VKRequestListener() {
+                                    @Override
+                                    public void onComplete(VKResponse response) {
+                                        super.onComplete(response);
+
+                                        try {
+                                            JSONObject jsonObject = (JSONObject) response.json.get("response");
+                                            JSONArray jsonArray = (JSONArray) jsonObject.get("items");
+                                            for (int i = 0; i != jsonArray.length(); i++) {
+                                                JSONObject post = (JSONObject) jsonArray.get(i);
+
+                                                if (!post.getString("text").equals("")) {
+                                                    arrayList.add(post.getString("text"));
+                                                }
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        arrayAdapter = new ArrayAdapter<String>(NewsActivity.this, android.R.layout.simple_list_item_1, arrayList);
+                                        listView.setAdapter(arrayAdapter);
+                                    }
+                                });
+                            }
+
+                        } catch(JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
-        };
-        Thread secThread = new Thread(runnable);
-        secThread.start();
-    }
 
-    private void getWeb()
-    {
-
-        try {
-            Document doc = Jsoup.connect("https://vk.com/sed_announce").get();
-            Elements tables = doc.select("div[class^=wall_post_text]");;
-
-            for (int i=0;i<tables.size();i++)
-            {
-                ListItemClass items = new ListItemClass();
-                items.setData_1(tables.get(i).text());
-                arrayList.add(items);
+            @Override
+            public void onError(VKError error) {
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             }
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.notifyDataSetChanged();
-                }
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-    private void get_posts() {
-        Disposable disposable = Single.fromCallable(this::requestToSite)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(__ -> Toast.makeText(this, "parse Error", Toast.LENGTH_LONG).show())
-                .subscribe(document ->
-                    grid.setAdapter(new TextAndImageAdapter(this, getListOfItems(document)))
-                    ,
-                    throwable -> Log.e("SUBSCRIBER", "get_post method crushed", throwable));
-        compositeDisposable.add(disposable);
-
-    }
-
-    private List<ListItem> getListOfItems(Document document) {
-        List<ListItem> postsList =  new ArrayList<>();
-        Elements elements = document.select(".post_content");
-        for (Element el : elements) {
-            postsList.add(getListItem(el));
-        }
-        return postsList;
-    }
-
-    private ListItem getListItem(Element element) {
-        String text_tv = null;
-
-        text_tv = element.select(".wall_post_text").text();
-
-        String uri_iv = null;
-        uri_iv = element.select("div.page_post_sized_thumbs").select("a").attr("style");
-        if (!uri_iv.equals(""))
-            uri_iv = uri_iv.substring(uri_iv.indexOf("https://"), uri_iv.indexOf(")"));
-
-        return new ListItem(text_tv, uri_iv);
-    }
-
-    private Document requestToSite() {
-        try {
-            return Jsoup.connect("https://vk.com/sed_announce").get();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        })) {
+            super.onActivityResult(reqeustCode, resultCode, data);
         }
     }
 }

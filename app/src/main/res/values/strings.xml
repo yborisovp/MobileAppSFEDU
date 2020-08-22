@@ -1,4 +1,5 @@
 <resources>
+    <integer name="com_vk_sdk_AppId">7566941</integer>
     <string name="app_name">Hope</string>
     <string name = "Расписание">Расписание занятий группы *****-*</string>
     <string name = "title"> День</string>
