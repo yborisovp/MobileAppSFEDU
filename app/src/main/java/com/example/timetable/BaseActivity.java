@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -34,7 +36,9 @@ public class BaseActivity extends AppCompatActivity {
     private List<Info> lessons = new ArrayList<>();
     private String []Days;
     private  int week_actual;
-    private int firstStudyWeek = 33;//надо поставить 35
+    private int firstStudyWeek = 34;//надо поставить 35
+    ArrayList<TimeList> lists = new ArrayList<TimeList>();
+    TimeListAdapter AdapterList;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -46,7 +50,7 @@ public class BaseActivity extends AppCompatActivity {
         //Устанавливаем tool_bar
         setToolbar();
 
-        Days = setDays(Days);
+//        Days = setDays(Days);
 
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
         button_back.setRotation(270);
@@ -65,10 +69,10 @@ public class BaseActivity extends AppCompatActivity {
         }
         );
 
-        setDayOfWeak();
-
-        ListView TimeList = (ListView) findViewById(R.id.TimeList);
-        ListView LessonsList = (ListView) findViewById(R.id.LessonsList);
+//        setDayOfWeak();
+//
+//        ListView TimeList = (ListView) findViewById(R.id.TimeList);
+//        ListView LessonsList = (ListView) findViewById(R.id.LessonsList);
 
         //автоматическое определение дня недели - написано Ариной
         Calendar calendar = Calendar.getInstance();
@@ -212,14 +216,33 @@ public class BaseActivity extends AppCompatActivity {
         MyCustomAdapter DAYS= new MyCustomAdapter(BaseActivity.this,
                 R.layout.timetable_drop_down_view_spinner, Days);*/
 
-        Time_Adapter TIME = new Time_Adapter(this, com.example.sfedymob.R.layout.timetable_time_layout, times);
-        Lesson_Adapter LESSON = new Lesson_Adapter(this, com.example.sfedymob.R.layout.timetable_lessons_layout, lessons);
-
-        // устанавливаем адаптер
-        TimeList.setAdapter(TIME);
-        LessonsList.setAdapter(LESSON);
+//        Time_Adapter TIME = new Time_Adapter(this, com.example.sfedymob.R.layout.timetable_time_layout, times);
+//        Lesson_Adapter LESSON = new Lesson_Adapter(this, com.example.sfedymob.R.layout.timetable_lessons_layout, lessons);
+//
+//        // устанавливаем адаптер
+//        TimeList.setAdapter(TIME);
+//        LessonsList.setAdapter(LESSON);
         //spinner.setAdapter(DAYS);
+
+        //список с времемнем и парами
+        fillData();
+        AdapterList = new TimeListAdapter(this, lists);
+        ListView ListTimeBox = (ListView) findViewById(R.id.TimeList);
+        ListTimeBox.setAdapter(AdapterList);
     }
+
+    //данные для адаптера
+    void fillData() {
+        lists.add(new TimeList("08:00 - 09:35", "Пара1"));
+        lists.add(new TimeList("9:50 - 11:25", "Пара2"));
+        lists.add(new TimeList("11:55 - 13:30", "Пара2"));
+        lists.add(new TimeList("13:45 - 15:20", "Пара3"));
+        lists.add(new TimeList("15:50 - 17:25", "Пара4"));
+        lists.add(new TimeList("19:30 - 21:05", "Пара5"));
+
+    }
+
+
 
     private String []setDays(String []Days) {
         Days = getResources().getStringArray(R.array.dayofweek);
@@ -241,8 +264,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setInitialData(){
-
-
         times.add(new Info("08:00 - 09:35"));
         times.add(new Info("09:50 - 11:25"));
         times.add(new Info("11:50 - 13:30"));
@@ -272,8 +293,6 @@ public class BaseActivity extends AppCompatActivity {
         });
 
     }
-
-    //функция для изменения надписей на кнопочках внутри диалогово окна недели
 
     /*системная кнопка назад*/
         @Override
