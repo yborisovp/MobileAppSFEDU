@@ -7,6 +7,13 @@
     <string name="floor2_descr">Второй этаж</string>
     <string name="floor3_descr">Третий этаж</string>
     <string name="floor4_descr">Четвёртый этаж</string>
+    <string name="floor5_descr">Пятый этаж</string>
+    <string name="floor6_descr">Шестой этаж</string>
+    <string name="floor7_descr">Седьмой этаж</string>
+    <string name="floor8_descr">Восьмой этаж</string>
+    <string name="floor9_descr">Девятый этаж</string>
+    <string name="ictis">ИКТИБ</string>
+    <string name="sfedu">ЮФУ</string>
     <string-array name="dayofweek">
         <item>Понедельник</item>
         <item>Вторник</item>

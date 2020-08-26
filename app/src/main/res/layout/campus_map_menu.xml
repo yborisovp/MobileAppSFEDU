@@ -14,7 +14,7 @@
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:contentDescription="ICTIS logo"
+            android:contentDescription="@string/ictis"
             android:src="@drawable/ictis_logo_white"
             android:layout_centerVertical="true"
             android:layout_marginStart="190dp">
@@ -23,7 +23,7 @@
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:contentDescription="ICTIS logo"
+            android:contentDescription="@string/sfedu"
             android:src="@drawable/sfedu_logo_white"
             android:layout_centerVertical="true"
             android:layout_marginStart="50dp">

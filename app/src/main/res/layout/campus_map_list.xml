@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@color/colorHead">
 
         <TextView
@@ -27,17 +27,17 @@
 
     <RelativeLayout
         android:layout_width="352dp"
-        android:layout_height="56dp"
+        android:layout_height="40dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorList">
 
         <TextView
             android:layout_width="322dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Учебные корпуса"
-            android:textSize="12pt"
+            android:textSize="10pt"
             android:gravity="center"
             android:textColor="@color/colorDarkBlueText">
         </TextView>
@@ -46,9 +46,9 @@
 
     <RelativeLayout
         android:layout_width="348dp"
-        android:layout_height="265dp"
+        android:layout_height="255dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorList">
 
         <!-->
@@ -89,18 +89,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="352dp"
-        android:layout_height="56dp"
+        android:layout_width="348dp"
+        android:layout_height="40dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorList">
 
         <TextView
             android:layout_width="322dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Общежития"
-            android:textSize="12pt"
+            android:textSize="10pt"
             android:gravity="center"
             android:textColor="@color/colorDarkBlueText">
         </TextView>
@@ -109,9 +109,9 @@
 
     <RelativeLayout
         android:layout_width="348dp"
-        android:layout_height="265dp"
+        android:layout_height="255dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorList">
 
         <GridView

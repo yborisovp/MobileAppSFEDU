@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorHead">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Корпус X"
+            android:textColor="@color/colorText"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="75dp"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorList">
+
+        <TextView
+            android:layout_width="322dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:text="адрес адрес"
+            android:textSize="12pt"
+            android:gravity="center"
+            android:textColor="@color/colorDarkBlueText">
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="507dp"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="15dp"
+        android:background="@color/colorList">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_one"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorList"
+            android:layout_marginTop="10dp"
+            android:id="@+id/floor0"
+            android:contentDescription="@string/floor1_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_two"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="65dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor2_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_three"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="120dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor3_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_four"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="175dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor4_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_five"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="230dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor5_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_six"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="285dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor6_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_seven"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="340dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor7_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_eight"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="395dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor8_descr">
+
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floor_nine"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="450dp"
+            android:background="@color/colorList"
+            android:contentDescription="@string/floor9_descr">
+
+        </ImageButton>
+
+    </RelativeLayout>
+
+</LinearLayout>
