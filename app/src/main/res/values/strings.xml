@@ -12,4 +12,5 @@
     </string-array>
     <string name="Text_dialog_days">Выберите день недели</string>
     <string name="Text_dialog_week">Выберите учебную неделю</string>
+    <string name="Text_dialog_group">Введите учебную группу</string>
 </resources>

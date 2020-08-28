@@ -12,9 +12,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
@@ -133,7 +135,7 @@ public class BaseActivity extends AppCompatActivity {
         });
 
         //диалоговое окно на "номер недели" - написано Ариной
-      Dialog dialogWeek;
+        Dialog dialogWeek;
 
         dialogWeek = new Dialog(this);
         dialogWeek.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -212,17 +214,41 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
 
-       /* Spinner spinner = (Spinner) findViewById(R.id.days_of_week);
-        MyCustomAdapter DAYS= new MyCustomAdapter(BaseActivity.this,
-                R.layout.timetable_drop_down_view_spinner, Days);*/
+        Dialog dialogGroup;
 
-//        Time_Adapter TIME = new Time_Adapter(this, com.example.sfedymob.R.layout.timetable_time_layout, times);
-//        Lesson_Adapter LESSON = new Lesson_Adapter(this, com.example.sfedymob.R.layout.timetable_lessons_layout, lessons);
-//
-//        // устанавливаем адаптер
-//        TimeList.setAdapter(TIME);
-//        LessonsList.setAdapter(LESSON);
-        //spinner.setAdapter(DAYS);
+        dialogGroup = new Dialog(this);
+        dialogGroup.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogGroup.setContentView(R.layout.timetable_dialog_group);
+        dialogGroup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView textGroup = (TextView) findViewById(R.id.textGroup) ;
+        EditText groupEditText = (EditText) dialogGroup.findViewById(R.id.editTextGroup);
+        Button EllDiaGroup1 = (Button) dialogGroup.findViewById(R.id.Button_group_left);
+        Button EllDiaGroup2 = (Button) dialogGroup.findViewById(R.id.Button_group_right);
+
+        //кнопка "X"
+        EllDiaGroup1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogGroup.dismiss();
+            }
+        });
+        //кнопка "V"
+        EllDiaGroup2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String stringGroup = groupEditText.getText().toString();
+                textGroup.setText(stringGroup);
+                dialogGroup.dismiss();
+            }
+        });
+
+        textGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogGroup.show();//показать окно
+            }
+        });
 
         //список с времемнем и парами
         fillData();
@@ -234,11 +260,11 @@ public class BaseActivity extends AppCompatActivity {
     //данные для адаптера
     void fillData() {
         lists.add(new TimeList("08:00 - 09:35", "Пара1"));
-        lists.add(new TimeList("9:50 - 11:25", "Пара2"));
-        lists.add(new TimeList("11:55 - 13:30", "Пара2"));
-        lists.add(new TimeList("13:45 - 15:20", "Пара3"));
-        lists.add(new TimeList("15:50 - 17:25", "Пара4"));
-        lists.add(new TimeList("19:30 - 21:05", "Пара5"));
+        lists.add(new TimeList("09:50 - 11:25", "Пара2"));
+        lists.add(new TimeList("11:55 - 13:30", "Пара3"));
+        lists.add(new TimeList("13:45 - 15:20", "Пара4"));
+        lists.add(new TimeList("15:50 - 17:25", "Пара5"));
+        lists.add(new TimeList("19:30 - 21:05", "Пара6"));
 
     }
 

@@ -28,7 +28,9 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:text="Группа"
+                android:id="@+id/textGroup"
                 android:textColor="#FFFFFF" />
+
 
             <ImageButton
                 android:id="@+id/button_back"
