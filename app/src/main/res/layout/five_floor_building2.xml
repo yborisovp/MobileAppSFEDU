@@ -30,7 +30,7 @@
         android:layout_height="75dp"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="15dp"
-        android:background="@color/colorList">
+        android:background="@drawable/bg_360_75">
 
         <TextView
             android:layout_width="322dp"
@@ -50,7 +50,7 @@
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="15dp"
         android:paddingHorizontal="15dp"
-        android:background="@color/colorList">
+        android:background="@drawable/bg_360_507">
 
         <ImageButton
             android:layout_width="wrap_content"
