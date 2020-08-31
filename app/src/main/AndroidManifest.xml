@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.timetable.BaseActivity" />
-        <activity android:name="com.example.news_vk.NewsActivity" />
+        <activity android:name="com.example.news_vk.NewsActivity"
+            android:parentActivityName=".StartActivity"/>
 
     </application>
 

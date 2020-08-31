@@ -5,7 +5,7 @@
         <shape android:shape="rectangle">
             <size
                 android:width="196dp"
-                android:height="45dp"
+                android:height="50dp"
                 />
             <corners
                 android:radius="35dp"
