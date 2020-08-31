@@ -53,70 +53,12 @@ public class NewsActivity extends AppCompatActivity {
         gridInit();
 
     }
-    /*
-     *
-     *
-     *
-     *
-     *
-     * */
-    public void vkApiInit() {
 
-    }
-
-    /*
-    *
-    *
-    *
-    *
-    *
-    * */
     private void gridInit() {
         grid = findViewById(R.id.news_grid_items);
         get_posts();
     }
-    /*private void init()
-    {
-        ListView listView = findViewById(R.id.listView);
-        arrayList = new ArrayList<>();
-        adapter = new CustomArrayAdapter(this, R.layout.news_list_item, arrayList, getLayoutInflater());
-        listView.setAdapter(adapter);
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getWeb();
-            }
-        };
-        Thread secThread = new Thread(runnable);
-        secThread.start();
-    }
 
-    private void getWeb()
-    {
-
-        try {
-            Document doc = Jsoup.connect("https://vk.com/sed_announce").get();
-            Elements tables = doc.select("div[class^=wall_post_text]");;
-
-            for (int i=0;i<tables.size();i++)
-            {
-                ListItemClass items = new ListItemClass();
-                items.setData_1(tables.get(i).text());
-                arrayList.add(items);
-            }
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.notifyDataSetChanged();
-                }
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
     private void get_posts() {
         Disposable disposable = Single.fromCallable(this::requestToSite)
                 .subscribeOn(Schedulers.io())

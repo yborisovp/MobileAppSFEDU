@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class TextAndImageAdapter extends BaseAdapter {
     private Context context;
     private List<ListItem> postsList;
+
     public TextAndImageAdapter(Context context, List<ListItem> postsList) {
         this.context = context;
         this.postsList = postsList;
@@ -47,13 +49,13 @@ public class TextAndImageAdapter extends BaseAdapter {
             grid = inflater.inflate(R.layout.news_item, null);
             TextView textView = grid.findViewById(R.id.news_text_field);
             Button button = grid.findViewById(R.id.news_read_more_button);
-            if(postsList.get(position).text_tv.equals("")) {
+            if (postsList.get(position).text_tv.equals("")) {
                 textView.setVisibility(View.GONE);
                 button.setVisibility(View.GONE);
             } else {
                 textView.setText(postsList.get(position).text_tv);
-                button.setOnClickListener(v ->{
-                    textView.setMaxLines(Integer.MAX_VALUE );
+                button.setOnClickListener(v -> {
+                    textView.setMaxLines(Integer.MAX_VALUE);
                     button.setVisibility(View.GONE);
                 });
             }
@@ -73,5 +75,10 @@ public class TextAndImageAdapter extends BaseAdapter {
             grid = convertView;
         }
         return grid;
+    }
+
+    private Animation createAnim() {
+
+        return null;
     }
 }

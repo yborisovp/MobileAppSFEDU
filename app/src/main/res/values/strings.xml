@@ -2,6 +2,9 @@
     <string name="app_name">Hope</string>
     <string name = "Расписание">Расписание занятий группы *****-*</string>
     <string name = "title"> День</string>
+    <string name="login_layout_please_sign_in">Please, sign in</string>
+    <string name="login_layout_email">Email</string>
+    <string name="login_layout_password">Password</string>
     <string-array name="dayofweek">
         <item>Понедельник</item>
         <item>Вторник</item>
