@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ToolBar" parent = "Widget.AppCompat.SearchView">
+
+    </style>
 </resources>

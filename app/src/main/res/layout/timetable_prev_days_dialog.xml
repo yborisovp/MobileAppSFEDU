@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/dialogViewDays"
+    android:background="@drawable/timetable_dailog_fon"
+    android:layout_gravity="center"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/text_dialog_days"
+            android:text="@string/Text_dialog_days"
+            android:layout_weight="70"
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/colorAbsoluteBlackText"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="-6dp"
+            android:layout_weight="30">
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_Mn"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="пн"
+                android:layout_marginRight="8dp"
+            />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_Ts"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="вт"
+                android:layout_marginRight="8dp"
+
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_Wd"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="ср"
+                android:layout_marginRight="8dp"
+
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_Th"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="чт"
+                android:layout_marginRight="8dp"
+
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_Fr"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="пт"
+                android:layout_marginRight="8dp"
+
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Button_days_St"
+                android:background="@drawable/timetable_button_days"
+                android:layout_weight="5"
+                android:text="сб"
+
+                />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
