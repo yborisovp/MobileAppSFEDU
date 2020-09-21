@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -53,6 +55,8 @@ public class TextAndImageAdapter extends BaseAdapter {
             } else {
                 textView.setText(postsList.get(position).text_tv);
                 button.setOnClickListener(v ->{
+                    Animation animIn = AnimationUtils.loadAnimation(context, R.anim.anim_in);
+                    textView.startAnimation(animIn);
                     textView.setMaxLines(Integer.MAX_VALUE );
                     button.setVisibility(View.GONE);
                 });
