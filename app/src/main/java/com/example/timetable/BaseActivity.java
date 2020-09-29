@@ -6,16 +6,17 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-
+import java.io.BufferedReader;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AbsListView;
+
 import android.widget.Button;
 import android.widget.EditText;
+import java.net.*;
+import java.io.*;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Spinner;
+
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -24,10 +25,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sfedymob.R;
 import com.example.sfedymob.StartActivity;
+import com.example.timetable.Parse;
 import com.example.sfedymob.supporting_functions.Info;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -251,24 +258,27 @@ public class BaseActivity extends AppCompatActivity {
         });
 
         //список с времемнем и парами
-        fillData();
+        try {
+            fillData();
+        } catch (IOException | SQLException | JSONException e) {
+            e.printStackTrace();
+        }
         AdapterList = new TimeListAdapter(this, lists);
         ListView ListTimeBox = (ListView) findViewById(R.id.TimeList);
         ListTimeBox.setAdapter(AdapterList);
     }
 
     //данные для адаптера
-    void fillData() {
-        lists.add(new TimeList("08:00 - 09:35", "Пара1"));
-        lists.add(new TimeList("09:50 - 11:25", "Пара2"));
-        lists.add(new TimeList("11:55 - 13:30", "Пара3"));
-        lists.add(new TimeList("13:45 - 15:20", "Пара4"));
-        lists.add(new TimeList("15:50 - 17:25", "Пара5"));
-        lists.add(new TimeList("19:30 - 21:05", "Пара6"));
+    public void fillData() throws IOException, SQLException, JSONException {
+        Calendar c = Calendar.getInstance();
+        Integer dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+        Parse parse = new Parse(lists, AdapterList, dayOfWeek);
+        Thread thread = new Thread(parse);
+        thread.start();
+
 
     }
-
-
 
     private String []setDays(String []Days) {
         Days = getResources().getStringArray(R.array.dayofweek);
@@ -280,7 +290,6 @@ public class BaseActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setActionBar(toolbar);
-        setInitialData();
     }
     private void setDayOfWeak() {
 
@@ -289,22 +298,7 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    private void setInitialData(){
-        times.add(new Info("08:00 - 09:35"));
-        times.add(new Info("09:50 - 11:25"));
-        times.add(new Info("11:50 - 13:30"));
-        times.add(new Info("13:45 - 15:20"));
-        times.add(new Info("15:50 - 17:25"));
-        times.add(new Info("19:30 - 21:05"));
 
-        lessons.add(new Info("Пара"));
-        lessons.add(new Info("Пара"));
-        lessons.add(new Info("Пара"));
-        lessons.add(new Info("Пара"));
-        lessons.add(new Info("Пара"));
-        lessons.add(new Info("Пара"));
-
-    }
 
 
 //упрощает выбор варианта в диалоговом окне: выбор изменяет надпись на кнопке
