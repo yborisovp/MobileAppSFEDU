@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import java.io.BufferedReader;
+
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -18,12 +20,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sfedymob.R;
+import com.example.timetable.Parse;
 import com.example.sfedymob.StartActivity;
 import com.example.timetable.Parse;
 import com.example.sfedymob.supporting_functions.Info;
@@ -38,14 +42,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class BaseActivity extends AppCompatActivity {
 
     private List<Info> times = new ArrayList<>();
     private List<Info> lessons = new ArrayList<>();
     private String []Days;
-    private  int week_actual;
-    private int firstStudyWeek = 34;//надо поставить 35
+    private int week_actual;
+    private int firstStudyWeek = 35;
+    private ListView ListTimeBox;
     ArrayList<TimeList> lists = new ArrayList<TimeList>();
     TimeListAdapter AdapterList;
 
@@ -185,7 +200,7 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         });
-        //кнопкаа вправо
+        //кнопка вправо
         PolDiaWeek2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -258,14 +273,13 @@ public class BaseActivity extends AppCompatActivity {
         });
 
         //список с времемнем и парами
+
         try {
             fillData();
         } catch (IOException | SQLException | JSONException e) {
             e.printStackTrace();
         }
-        AdapterList = new TimeListAdapter(this, lists);
-        ListView ListTimeBox = (ListView) findViewById(R.id.TimeList);
-        ListTimeBox.setAdapter(AdapterList);
+        AdapterList.notifyDataSetChanged();
     }
 
     //данные для адаптера
@@ -273,11 +287,29 @@ public class BaseActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         Integer dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 
-        Parse parse = new Parse(lists, AdapterList, dayOfWeek);
-        Thread thread = new Thread(parse);
-        thread.start();
+        ExecutorService executor;
+        executor = Executors.newFixedThreadPool(1);
 
+        List<Future<ArrayList<TimeList>>> futures = new ArrayList<Future<ArrayList<TimeList>>>();
 
+        Callable<ArrayList<TimeList>> callable = new Parse(lists, dayOfWeek);
+
+        Future<ArrayList<TimeList>> future;
+        future = executor.submit(callable);
+
+        futures.add(future);
+
+        try {
+            lists = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        executor.shutdown();
+
+        AdapterList = new TimeListAdapter(this, lists);
+        ListTimeBox = (ListView) findViewById(R.id.TimeList);
+        ListTimeBox.setAdapter(AdapterList);
     }
 
     private String []setDays(String []Days) {
