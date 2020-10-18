@@ -288,16 +288,15 @@ public class BaseActivity extends AppCompatActivity {
         Integer dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 
         ExecutorService executor;
-        executor = Executors.newFixedThreadPool(1);
 
-        List<Future<ArrayList<TimeList>>> futures = new ArrayList<Future<ArrayList<TimeList>>>();
+        executor = Executors.newFixedThreadPool(1);
 
         Callable<ArrayList<TimeList>> callable = new Parse(lists, dayOfWeek);
 
         Future<ArrayList<TimeList>> future;
         future = executor.submit(callable);
 
-        futures.add(future);
+
 
         try {
             lists = future.get();
