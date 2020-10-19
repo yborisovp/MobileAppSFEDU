@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/dialogVieWGroup"
+    android:background="@drawable/timetable_fon_week"
+    android:layout_gravity="center"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/Text_dialog_group"
+            android:layout_weight="40"
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/colorAbsoluteBlackText"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="60"
+            android:paddingRight="60dp"
+            android:paddingLeft="60dp"
+            android:gravity="center">
+            >
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="8"
+                android:paddingTop="4dp"
+                android:id="@+id/editTextGroup"
+                android:backgroundTint="@color/colorAbsoluteBlackText"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="4dp"
+            >
+
+            <Button
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:id="@+id/Button_group_left"
+                android:text="X"
+                android:background="@drawable/timetable_ellipse"
+                android:layout_marginRight="220dp"
+
+                />
+
+            <Button
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:id="@+id/Button_group_right"
+                android:text="V"
+                android:background="@drawable/timetable_ellipse"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
