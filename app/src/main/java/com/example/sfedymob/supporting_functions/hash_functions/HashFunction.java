@@ -5,8 +5,12 @@ import org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider;
 import java.security.Security;
 
 
-public class Create_and_Send_Email_Hash {
-    private void create_Provider() {
-        Security.addProvider(new BouncyCastleFipsProvider());
+public class HashFunction {
+
+
+
+    public static String getHash(String email, String password) {
+
+        return password;
     }
 }

@@ -1,8 +1,10 @@
 package com.example.news_vk;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,17 +13,25 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sfedymob.R;
+import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKCallback;
+import com.vk.sdk.VKSdk;
+import com.vk.sdk.api.VKApiConst;
+import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
+import com.vk.sdk.api.VKRequest;
+import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.methods.VKApiGroups;
+import com.vk.sdk.api.methods.VKApiWall;
+import com.vk.sdk.api.model.VKList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,72 +44,79 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class NewsActivity extends AppCompatActivity {
-
-    //private CustomArrayAdapter adapter;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
-    TextAndImageAdapter textAndImageAdapter;
-    GridView grid;
-    //private List<ListItemClass> arrayList;
-
+    ListView listView;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_grid_fragment);
-        grid = findViewById(R.id.news_grid_items);
-        
-        gridInit();
+
+
+        VKSdk.login(this);
+        listView = (ListView) findViewById(R.id.listView);
 
     }
 
-    private void gridInit() {
-        grid = findViewById(R.id.news_grid_items);
-        get_posts();
-    }
+    @Override
+    protected void onActivityResult(int reqeustCode, int resultCode, Intent data) {
+        if (!VKSdk.onActivityResult(reqeustCode, resultCode, data, new VKCallback<VKAccessToken>() {
+            @Override
+            public void onResult(VKAccessToken res) {
+                VKRequest vkRequest = new VKApiGroups().getById(VKParameters.from("group_ids", "sed_announce"));
+                vkRequest.executeWithListener(new VKRequest.VKRequestListener() {
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        super.onComplete(response);
 
-    private void get_posts() {
-        Disposable disposable = Single.fromCallable(this::requestToSite)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(__ -> Toast.makeText(this, "parse Error", Toast.LENGTH_LONG).show())
-                .subscribe(document ->
-                    grid.setAdapter(new TextAndImageAdapter(this, getListOfItems(document)))
-                    ,
-                    throwable -> Log.e("SUBSCRIBER", "get_post method crushed", throwable));
-        compositeDisposable.add(disposable);
+                        VKList vkList = (VKList) response.parsedModel;
+                        try {
 
-    }
+                            for (int j = 0; j <= 300; j += 100) {
+                                VKRequest vkRequest1 = new VKApiWall().get(VKParameters.from(VKApiConst.OWNER_ID, "-" + vkList
+                                        .get(0).fields.getInt("id"), VKApiConst.COUNT, 100, VKApiConst.OFFSET, j));
 
-    private List<ListItem> getListOfItems(Document document) {
-        List<ListItem> postsList =  new ArrayList<>();
-        Elements elements = document.select(".post_content");
-        for (Element el : elements) {
-            postsList.add(getListItem(el));
-        }
-        return postsList;
-    }
+                                vkRequest1.executeWithListener(new VKRequest.VKRequestListener() {
+                                    @Override
+                                    public void onComplete(VKResponse response) {
+                                        super.onComplete(response);
 
-    private ListItem getListItem(Element element) {
-        String text_tv = null;
+                                        try {
+                                            JSONObject jsonObject = (JSONObject) response.json.get("response");
+                                            JSONArray jsonArray = (JSONArray) jsonObject.get("items");
+                                            for (int i = 0; i != jsonArray.length(); i++) {
+                                                JSONObject post = (JSONObject) jsonArray.get(i);
 
-        text_tv = element.select(".wall_post_text").text();
+                                                if (!post.getString("text").equals("")) {
+                                                    arrayList.add(post.getString("text"));
+                                                }
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        arrayAdapter = new ArrayAdapter<String>(NewsActivity.this, android.R.layout.simple_list_item_1, arrayList);
+                                        listView.setAdapter(arrayAdapter);
+                                    }
+                                });
+                            }
 
-        String uri_iv = null;
-        uri_iv = element.select("div.page_post_sized_thumbs").select("a").attr("style");
-        if (!uri_iv.equals(""))
-            uri_iv = uri_iv.substring(uri_iv.indexOf("https://"), uri_iv.indexOf(")"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
-        return new ListItem(text_tv, uri_iv);
-    }
+            }
 
-    private Document requestToSite() {
-        try {
-            return Jsoup.connect("https://vk.com/sed_announce").get();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            @Override
+            public void onError(VKError error) {
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+            }
+        })) {
+            super.onActivityResult(reqeustCode, resultCode, data);
         }
     }
 }
+

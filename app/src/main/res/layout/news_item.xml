@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/news_text_field"
         android:background="?android:selectableItemBackground"
-        android:text="Читать дальше..."
+        android:text="Read more.."
         android:textAllCaps="false"
         android:textColor="#2c5aa3"
         android:textSize="12sp" />
