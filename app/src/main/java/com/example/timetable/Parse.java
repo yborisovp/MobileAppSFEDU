@@ -43,6 +43,8 @@ public class Parse implements Callable<ArrayList<TimeList>> {
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
+
+
             in.close();
 
 
