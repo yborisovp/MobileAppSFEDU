@@ -6,38 +6,24 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import java.io.BufferedReader;
-
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-
 import android.widget.Button;
 import android.widget.EditText;
-import java.net.*;
-import java.io.*;
-import android.widget.ImageButton;
 import android.widget.ListView;
-
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sfedymob.R;
-import com.example.timetable.Parse;
 import com.example.sfedymob.StartActivity;
-import com.example.timetable.Parse;
 import com.example.sfedymob.supporting_functions.Info;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,11 +33,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -76,22 +57,22 @@ public class BaseActivity extends AppCompatActivity {
 
 //        Days = setDays(Days);
 
-        ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
-        button_back.setRotation(270);
-
-        //код добавлен - Ариной : кнопка назад
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(BaseActivity.this, StartActivity.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){ }
-            }
-        }
-        );
+//        ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
+//        button_back.setRotation(270);
+//
+//        //код добавлен - Ариной : кнопка назад
+//        button_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//
+//            public void onClick(View v) {
+//                try {
+//                    Intent intent = new Intent(BaseActivity.this, StartActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }catch (Exception e){ }
+//            }
+//        }
+//        );
 
 //        setDayOfWeak();
 //

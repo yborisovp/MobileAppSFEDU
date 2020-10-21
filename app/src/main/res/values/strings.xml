@@ -1,21 +1,10 @@
 <resources>
     <string name="app_name">Hope</string>
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
-    <string name="Расписание">Расписание занятий группы *****-*</string>
-    <string name="title"> День</string>
-    =======
-    <string name="Timetable">Timetable</string>
-    <string name="title">Day</string>
+    <string name = "Timetable">Timetable</string>
+    <string name = "title">Day</string>
     <string name="login_layout_please_sign_in">Please, sign in</string>
     <string name="login_layout_email">Email</string>
     <string name="login_layout_password">Password</string>
-    >>>>>>> 3c8f72f... Последние обновы
     <string-array name="dayofweek">
         <item>Mon</item>
         <item>Tu</item>
@@ -24,17 +13,6 @@
         <item>Fr</item>
         <item>Sat</item>
     </string-array>
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
-    <string name="Text_dialog_days">Выберите день недели</string>
-    <string name="Text_dialog_week">Выберите учебную неделю</string>
-    <string name="Text_dialog_group">Введите учебную группу</string>
-    =======
     <integer name="com_vk_sdk_AppId">7566941</integer>
     <string name="Text_dialog_days">Choose day of the week</string>
     <string name="Text_dialog_week">Choose week</string>
@@ -59,10 +37,4 @@
     <string name="group">Group</string>
     <string name="day_of_the_week">Day</string>
     <string name="week">week</string>
-    <string name="title_activity_temp">Temp</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    >>>>>>> 3c8f72f... Последние обновы
 </resources>

@@ -12,15 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-<<<<<<< HEAD
-        android:layout_marginTop="20dp"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:textSize="16sp" />
-
-=======
         android:layout_marginTop="2dp"
->>>>>>> 3c8f72f... Последние обновы
 
         android:maxLines="4"
         android:textSize="16sp"/>
@@ -30,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/news_text_field"
         android:background="?android:selectableItemBackground"
-        android:text="Читать дальше..."
+        android:text="Read more.."
         android:textAllCaps="false"
         android:textColor="#2c5aa3"
         android:textSize="12sp" />
