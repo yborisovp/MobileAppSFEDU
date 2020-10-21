@@ -24,28 +24,24 @@ public class TimeListAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    //кол-во элементов
     @Override
     public int getCount() {
         return objects.size();
     }
 
-    //элемент по позиции
     @Override
     public Object getItem(int position) {
         return objects.get(position);
     }
 
-    // id по позиции
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    //пункт списка
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //используем создание но не используем View
+
         View view = convertView;
         if (view == null) {
             view = lInFlater.inflate(R.layout.timetable_list_block, parent, false);

@@ -1,16 +1,51 @@
 <resources>
     <string name="app_name">Hope</string>
+<<<<<<< HEAD
     <string name = "Расписание">Расписание занятий группы *****-*</string>
     <string name = "title"> День</string>
+=======
+    <string name = "Timetable">Timetable</string>
+    <string name = "title">Day</string>
+    <string name="login_layout_please_sign_in">Please, sign in</string>
+    <string name="login_layout_email">Email</string>
+    <string name="login_layout_password">Password</string>
+>>>>>>> 3c8f72f... Последние обновы
     <string-array name="dayofweek">
-        <item>Пн</item>
-        <item>Вт</item>
-        <item>Ср</item>
-        <item>Чт</item>
-        <item>Пт</item>
-        <item>Сб</item>
+        <item>Mon</item>
+        <item>Tu</item>
+        <item>Wen</item>
+        <item>Th</item>
+        <item>Fr</item>
+        <item>Sat</item>
     </string-array>
+<<<<<<< HEAD
     <string name="Text_dialog_days">Выберите день недели</string>
     <string name="Text_dialog_week">Выберите учебную неделю</string>
     <string name="Text_dialog_group">Введите учебную группу</string>
+=======
+    <integer name="com_vk_sdk_AppId">7566941</integer>
+    <string name="Text_dialog_days">Choose day of the week</string>
+    <string name="Text_dialog_week">Choose week</string>
+    <string name="Text_dialog_group">Enter group</string>
+    <string name="start_activity_enter_sfedu_email">Enter SFedU email</string>
+    <string name="start_activity_enter_password">Enter password</string>
+    <string name="start_activity_log_in">log in</string>
+    <string name="start_activity_enter_like_a_guest">Enter like a guest</string>
+    <string name="title_activity_nav">NavActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Name</string>
+    <string name="nav_header_subtitle">email@sfedu.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_news">News</string>
+    <string name="menu_timetable">Timetable</string>
+    <string name="menu_campus">News</string>
+    <string name="title_activity_navigation_news">NavigationNewsActivity</string>
+    <string name="campus">Campus</string>
+    <string name="group">Group</string>
+    <string name="day_of_the_week">Day</string>
+    <string name="week">week</string>
+>>>>>>> 3c8f72f... Последние обновы
 </resources>

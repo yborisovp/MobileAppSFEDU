@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tool_bar"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    app:contentInsetStart="0dp"
-
-    >
+    app:contentInsetStart="0dp">
 
     <RelativeLayout
+        android:id="@+id/link"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="84dp">
 
         <RelativeLayout
@@ -89,3 +89,49 @@
 
 
   </androidx.appcompat.widget.Toolbar>
+=======
+        android:layout_height="48dp"
+        android:layout_below="@+id/upper_tool"
+        android:layout_marginTop="-1dp"
+        android:background="@color/colorPrimaryDark">
+
+
+        <Button
+            android:id="@+id/days_of_week"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:background="@color/colorPrimaryDark_1"
+            android:text="@string/day_of_the_week"
+            android:textAlignment="center"
+
+
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:id="@+id/textGroup"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/group"
+            android:textColor="#FFF" />
+
+        <Button
+            android:id="@+id/button_of_the_week"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:background="@color/colorPrimaryDark_1"
+            android:text="@string/week"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>
+>>>>>>> 3c8f72f... Последние обновы
