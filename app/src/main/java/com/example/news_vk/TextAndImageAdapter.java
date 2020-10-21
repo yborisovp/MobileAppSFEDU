@@ -43,10 +43,12 @@ public class TextAndImageAdapter extends BaseAdapter {
         View grid;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
+
             grid = new View(context);
             grid = inflater.inflate(R.layout.news_item, null);
             TextView textView = grid.findViewById(R.id.news_text_field);
             Button button = grid.findViewById(R.id.news_read_more_button);
+
             if(postsList.get(position).text_tv.equals("")) {
                 textView.setVisibility(View.GONE);
                 button.setVisibility(View.GONE);

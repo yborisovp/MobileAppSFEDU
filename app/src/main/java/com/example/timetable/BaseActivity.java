@@ -259,9 +259,14 @@ public class BaseActivity extends AppCompatActivity {
         EllDiaGroup2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String stringGroup = groupEditText.getText().toString();
-                textGroup.setText(stringGroup);
-                dialogGroup.dismiss();
+                try {
+                    String stringGroup = groupEditText.getText().toString();
+                    textGroup.setText(stringGroup);
+                    fillData();
+                    dialogGroup.dismiss();
+                }catch (IOException | SQLException | JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -279,7 +284,7 @@ public class BaseActivity extends AppCompatActivity {
         } catch (IOException | SQLException | JSONException e) {
             e.printStackTrace();
         }
-        AdapterList.notifyDataSetChanged();
+
     }
 
     //данные для адаптера
@@ -295,8 +300,6 @@ public class BaseActivity extends AppCompatActivity {
 
         Future<ArrayList<TimeList>> future;
         future = executor.submit(callable);
-
-
 
         try {
             lists = future.get();
