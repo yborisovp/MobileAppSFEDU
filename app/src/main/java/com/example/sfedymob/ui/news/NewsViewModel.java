@@ -1,13 +1,10 @@
-package com.example.sfedymob.ui.home;
+package com.example.sfedymob.ui.news;
 
-import android.widget.GridView;
 import android.widget.ListView;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.example.news_vk.TextAndImageAdapter;
 
 public class NewsViewModel extends ViewModel {
 

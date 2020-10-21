@@ -55,7 +55,7 @@ public class TextAndImageAdapter extends BaseAdapter {
             } else {
                 textView.setText(postsList.get(position).text_tv);
                 button.setOnClickListener(v -> {
-                    textView.setMaxLines(Integer.MAX_VALUE);
+                    textView.setMaxLines(postsList.get(position).text_tv.length());
                     button.setVisibility(View.GONE);
                 });
             }

@@ -228,22 +228,22 @@ public class TimeTableFragment extends Fragment {
 
         switch (day) {
             case Calendar.MONDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Пн");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Mon");
                 break;
             case Calendar.TUESDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Вт");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Tu");
                 break;
             case Calendar.WEDNESDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Ср");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Wen");
                 break;
             case Calendar.THURSDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Чт");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Th");
                 break;
             case Calendar.FRIDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Пт");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Fri");
                 break;
             case Calendar.SATURDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Сб");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Su");
                 break;
         }
     }
