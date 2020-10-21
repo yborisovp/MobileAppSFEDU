@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.sfedymob.R;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TextAndImageAdapter extends BaseAdapter {
     private Context context;

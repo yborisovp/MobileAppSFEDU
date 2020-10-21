@@ -36,14 +36,13 @@
 
 
             <Button
+                android:id="@+id/Button_days_Mn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/Button_days_Mn"
-                android:background="@drawable/timetable_button_days"
-                android:layout_weight="5"
-                android:text="пн"
                 android:layout_marginRight="8dp"
-            />
+                android:layout_weight="5"
+                android:background="@drawable/timetable_button_days"
+                android:text="Mon" />
 
             <Button
                 android:layout_width="0dp"
@@ -51,7 +50,7 @@
                 android:id="@+id/Button_days_Ts"
                 android:background="@drawable/timetable_button_days"
                 android:layout_weight="5"
-                android:text="вт"
+                android:text="TU"
                 android:layout_marginRight="8dp"
 
                 />
@@ -62,7 +61,7 @@
                 android:id="@+id/Button_days_Wd"
                 android:background="@drawable/timetable_button_days"
                 android:layout_weight="5"
-                android:text="ср"
+                android:text="WN"
                 android:layout_marginRight="8dp"
 
                 />
@@ -73,7 +72,7 @@
                 android:id="@+id/Button_days_Th"
                 android:background="@drawable/timetable_button_days"
                 android:layout_weight="5"
-                android:text="чт"
+                android:text="Td"
                 android:layout_marginRight="8dp"
 
                 />
@@ -84,7 +83,7 @@
                 android:id="@+id/Button_days_Fr"
                 android:background="@drawable/timetable_button_days"
                 android:layout_weight="5"
-                android:text="пт"
+                android:text="FRI"
                 android:layout_marginRight="8dp"
 
                 />
@@ -95,7 +94,7 @@
                 android:id="@+id/Button_days_St"
                 android:background="@drawable/timetable_button_days"
                 android:layout_weight="5"
-                android:text="сб"
+                android:text="ST"
 
                 />
 

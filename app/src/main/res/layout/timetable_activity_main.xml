@@ -39,18 +39,6 @@
             android:scrollbars="none"
             android:divider="@android:color/transparent" />
 
-<!--        <ListView-->
-<!--            android:id="@+id/LessonsList"-->
-<!--            android:layout_width="220dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_marginLeft="4dp"-->
-<!--            android:layout_marginRight="1dp"-->
-<!--            android:layout_toRightOf="@+id/TimeList"-->
-<!--            android:background="@color/colorMain"-->
-<!--            android:divider="@android:color/transparent">-->
-
-<!--        </ListView>-->
 
     </RelativeLayout>
 

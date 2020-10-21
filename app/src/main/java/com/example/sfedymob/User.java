@@ -2,15 +2,13 @@ package com.example.sfedymob;
 
 import java.io.Serializable;
 
-class User implements Serializable {
+public class User implements Serializable {
     private String email;
     private String name;
-
     public User() {
         email = "";
         name = "Guest";
     }
-
     public User(String email, String name) {
         this.email = email;
         this.name = name;
@@ -24,4 +22,3 @@ class User implements Serializable {
         return email;
     }
 }
-

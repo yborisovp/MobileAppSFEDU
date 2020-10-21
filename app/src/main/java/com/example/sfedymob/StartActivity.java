@@ -2,12 +2,12 @@ package com.example.sfedymob;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.news_vk.NewsActivity;
-import com.example.timetable.BaseActivity;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -17,9 +17,9 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_main);
 
-        Button b = findViewById(R.id.timatableb);
+        Button b = findViewById(R.id.button_log);
         b.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BaseActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
@@ -28,6 +28,7 @@ public class StartActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
 
     }
 }

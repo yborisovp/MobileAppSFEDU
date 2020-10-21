@@ -1,10 +1,5 @@
 package com.example.timetable;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.ListView;
-
-import com.example.sfedymob.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,32 +8,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
+
 import java.net.URL;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class Parse implements Callable<ArrayList<TimeList>> {
     private ArrayList<TimeList> lists;
     private int dayOfWeek;
-    private String url = "http://165.22.28.187/schedule-api/?group=44.htm&week=7";
-    private Thread thread;
+    private String url = "http://165.22.28.187/schedule-api/?group="+"48"+".htm&week="+"7";
     private JSONArray arraylesson;
 
 
     Parse(ArrayList<TimeList> lists, int dayOfWeek) {
         this.lists = lists;
         this.dayOfWeek = dayOfWeek;
-    }
-
-    public ArrayList<TimeList> GETList() {
-        return this.lists;
     }
 
 
@@ -52,7 +38,7 @@ public class Parse implements Callable<ArrayList<TimeList>> {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
@@ -61,10 +47,9 @@ public class Parse implements Callable<ArrayList<TimeList>> {
 
 
             String jsonText = response.toString();
-            org.json.JSONObject parsedObject = new org.json.JSONObject(jsonText); //Здесь парсим.
+            org.json.JSONObject parsedObject = new org.json.JSONObject(jsonText); //Здесь парсим
             JSONArray top = parsedObject.getJSONObject("table").getJSONArray("table");
 
-            dayOfWeek = 2;
             if (dayOfWeek != 1) {
                 arraylesson = (JSONArray) top.get(dayOfWeek);
 
@@ -82,7 +67,3 @@ public class Parse implements Callable<ArrayList<TimeList>> {
         return lists;
     }
 }
-
-
-
-
