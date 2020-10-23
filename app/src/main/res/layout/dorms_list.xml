@@ -2,25 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorMain"
     android:orientation="vertical">
 
-
-    <GridView
-        android:id="@+id/gridView2"
+    <RelativeLayout
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="679dp"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:horizontalSpacing="-55dp"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"></GridView>
+        android:layout_height="40dp"
+        android:background="@color/colorHead">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:onClick="onClickCampus"
-        android:text="Перейти к корпусам" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Выбор здания"
+            android:textColor="@color/colorText"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="348dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_348_40">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Общежития"
+            android:textSize="10pt"
+            android:gravity="center"
+            android:textColor="@color/colorDarkBlueText">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/ChangeDorms"
+            android:onClick="onClickChangeDorms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pointer_left"
+            android:layout_alignParentLeft="true"
+
+            android:contentDescription="pointer"
+            android:background="@color/colorMain"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="348dp"
+        android:layout_height="560dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_348_560">
+
+        <GridView
+            android:id="@+id/gridView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="1"
+            android:padding="24dp" />
+
+    </RelativeLayout>
 
 </LinearLayout>

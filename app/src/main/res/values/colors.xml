@@ -7,4 +7,6 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorMain">#E1E2E1</color>
     <color name="colorList">#F5F5F6</color>
+    <color name="colorDarkBlueText">#002544</color>
+    <color name="colorDarkestPrimary">#04345B</color>
 </resources>

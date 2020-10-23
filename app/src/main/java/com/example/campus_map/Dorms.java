@@ -12,9 +12,9 @@ import com.example.sfedymob.R;
 public class Dorms extends Activity implements
         AdapterView.OnItemSelectedListener {
     private Dorms_Adapter mAdapter2;
-    private String item;
+    private Integer item;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dorms_list);
         final GridView g = (GridView) findViewById(R.id.gridView2);
@@ -23,16 +23,14 @@ public class Dorms extends Activity implements
         g.setAdapter(mAdapter2);
         g.setOnItemSelectedListener(this);
         g.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
-                Intent i = new Intent(Dorms.this,SelectFloorNumber.class);
-                item = String.valueOf(position);
-                i.putExtra("DormsFloor",item);
+                Intent i = new Intent(Dorms.this,ShowActivity.class);
+                item=position;
+                i.putExtra("pos",item);
+                i.putExtra("ind",2);
                 startActivity(i);
-
             }
         });
     }
@@ -40,18 +38,16 @@ public class Dorms extends Activity implements
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position,
                                long id) {
-        Intent i = new Intent(Dorms.this,SelectFloorNumber.class);
-        item = String.valueOf(position);
-        i.putExtra("DormsFloor",item);
+        Intent i = new Intent(Dorms.this,ShowActivity.class);
+        i.putExtra("pos",item);
+        i.putExtra("ind",2);
         startActivity(i);
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
     //----------------------------------------------------------------------------------------------
-    public void onClickHome(View view){
+    public void onClickChangeDorms(View view){
         Intent i = new Intent(Dorms.this,Campus.class);
         startActivity(i);
     }

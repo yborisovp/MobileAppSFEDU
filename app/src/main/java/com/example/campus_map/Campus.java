@@ -12,7 +12,7 @@ import com.example.sfedymob.R;
 public class Campus extends Activity implements
         AdapterView.OnItemSelectedListener  {
     private Campus_Adapter mAdapter;
-    private String item;
+    private Integer item;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +27,11 @@ public class Campus extends Activity implements
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Intent i = new Intent(Campus.this,SelectFloorNumber.class);
-                item = String.valueOf(position);
-                i.putExtra("CampusFloar",item);
+
+                Intent i = new Intent(Campus.this,ShowActivity.class);
+                item=position;
+                i.putExtra("pos",item);
+                i.putExtra("ind",1);
                 startActivity(i);
 
             }
@@ -38,9 +40,10 @@ public class Campus extends Activity implements
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position,
                                long id) {
-        Intent i = new Intent(Campus.this,SelectFloorNumber.class);
-        item = String.valueOf(position);
-        i.putExtra("CampusFloar",item);
+        Intent i = new Intent(Campus.this,ShowActivity.class);
+        item=position;
+        i.putExtra("pos",item);
+        i.putExtra("ind",1);
         startActivity(i);
     }
 
@@ -49,8 +52,8 @@ public class Campus extends Activity implements
 
     }
     //----------------------------------------------------------------------------------------------
-    public void onClickHome(View view){
-        Intent i = new Intent(Campus.this,Dorms.class);
+    public void onClickChangeCampus(View view){
+        Intent i = new Intent(Campus.this, Dorms.class);
         startActivity(i);
     }
     //----------------------------------------------------------------------------------------------

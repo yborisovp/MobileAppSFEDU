@@ -6,9 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class Campus_Adapter extends ArrayAdapter<String>{
-    private static final String[] mCampus={"A", "Чехова 22", "Б",
-            "Маринская 35", "В", "Александровская 25", "Г", "Некрасовский 44", "Д",
-            "Некрасовский 44"};
+    private static final String[] mCampus={"А:Чехова 22А","Б:Чехова 22Б","Г:Энгельса 1","Д:Некрасовский пер. 44Д","И:Чехова 2","К:Шевченко 2"};
 
     Context mContext;
 
