@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20sp"
-    android:paddingBottom="20sp">
+    android:padding="4dp"
+    android:paddingBottom="2dp">
 
     <TextView
         android:id="@+id/news_text_field"
@@ -12,27 +12,25 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="20dp"
-        android:ellipsize="end"
+        android:layout_marginTop="2dp"
+
         android:maxLines="4"
-        android:textSize="16sp" />
-
-
+        android:textSize="16sp"/>
     <Button
         android:id="@+id/news_read_more_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/news_text_field"
         android:background="?android:selectableItemBackground"
-        android:text="Читать дальше..."
+        android:text="Read more.."
         android:textAllCaps="false"
         android:textColor="#2c5aa3"
         android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/news_image_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
         android:layout_below="@+id/news_read_more_button"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"

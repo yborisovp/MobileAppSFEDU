@@ -4,88 +4,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tool_bar"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    app:contentInsetStart="0dp"
-
-    >
+    app:contentInsetStart="0dp">
 
     <RelativeLayout
+        android:id="@+id/link"
         android:layout_width="match_parent"
-        android:layout_height="84dp">
-
-        <RelativeLayout
-            android:id="@+id/upper_tool"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:background="@color/colorPrimaryDark">
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="20dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:text="Группа"
-                android:id="@+id/textGroup"
-                android:textColor="#FFFFFF" />
+        android:layout_height="48dp"
+        android:layout_below="@+id/upper_tool"
+        android:layout_marginTop="-1dp"
+        android:background="@color/colorPrimaryDark">
 
 
-            <ImageButton
-                android:id="@+id/button_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:background="@color/colorPrimaryDark"
-                android:src="@drawable/timetable_point" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/link"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@+id/upper_tool"
-            android:layout_marginTop="-1dp"
-            android:background="@color/colorHead">
-
-           <!--<Spinner
-                android:id="@+id/days_of_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:background="#00000000"
-               android:entries="@array/dayofweek" />-->
-
-            <Button
-                android:id="@+id/days_of_week"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/timetable_button"
-                android:text=" День недели "
-                android:textColor="#FFFFFF"/>
-
-              <Button
-                  android:id="@+id/button_of_the_week"
-                  android:layout_width="wrap_content"
-                  android:layout_height="30dp"
-                  android:layout_alignParentRight="true"
-                  android:layout_centerVertical="true"
-                  android:layout_marginRight="35dp"
-                  android:background="@drawable/timetable_button"
-                  android:text="Неделя"
-                  android:textColor="#FFFFFF"
-
-                  />
+        <Button
+            android:id="@+id/days_of_week"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:background="@color/colorPrimaryDark_1"
+            android:text="@string/day_of_the_week"
+            android:textAlignment="center"
 
 
-          </RelativeLayout>
-
-      </RelativeLayout>
+            android:textColor="#FFFFFF" />
 
 
-  </androidx.appcompat.widget.Toolbar>
+        <TextView
+            android:id="@+id/textGroup"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/group"
+            android:textColor="#FFF" />
+
+        <Button
+            android:id="@+id/button_of_the_week"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:background="@color/colorPrimaryDark_1"
+            android:text="@string/week"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>
