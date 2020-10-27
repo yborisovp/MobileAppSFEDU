@@ -1,10 +1,27 @@
 <resources>
     <string name="app_name">Hope</string>
+
     <string name = "Timetable">Timetable</string>
     <string name = "title">Day</string>
     <string name="login_layout_please_sign_in">Please, sign in</string>
     <string name="login_layout_email">Email</string>
     <string name="login_layout_password">Password</string>
+    <string name = "Расписание">Расписание занятий группы *****-*</string>
+    <string name = "title"> День</string>
+    <string name="floor0_descr">Нулевой этаж/подвал</string>
+    <string name="floor1_descr">Первый этаж</string>
+    <string name="floor2_descr">Второй этаж</string>
+    <string name="floor3_descr">Третий этаж</string>
+    <string name="floor4_descr">Четвёртый этаж</string>
+    <string name="floor5_descr">Пятый этаж</string>
+    <string name="floor6_descr">Шестой этаж</string>
+    <string name="floor7_descr">Седьмой этаж</string>
+    <string name="floor8_descr">Восьмой этаж</string>
+    <string name="floor9_descr">Девятый этаж</string>
+    <string name="ictis">ICTIS</string>
+    <string name="sfedu">SFEDU</string>
+    <string name="building">Корпус</string>
+    <string name="dormitory">Общежитие</string>
     <string-array name="dayofweek">
         <item>Mon</item>
         <item>Tu</item>
