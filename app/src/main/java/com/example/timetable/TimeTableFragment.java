@@ -25,7 +25,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -37,26 +38,61 @@ public class TimeTableFragment extends Fragment {
     private int week_actual;
     private Calendar calendar;
     private ListView ListTimeBox;
+    private String week;
+    private boolean Changed = false;
+
+    Integer dayOfWeek;
+
     ArrayList<TimeList> lists = new ArrayList<>();
+    Map<String, Integer> daysOfWeek = new HashMap<String, Integer>();
+
     TimeListAdapter AdapterList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.timetable_activity_main, container, false);
-        init();
+        DaysInit();
+        calendar = Calendar.getInstance();
+        dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);;
 
         Button but_days_of_week = root.findViewById(R.id.days_of_week);
         but_days_of_week.setOnClickListener(v -> {
             onDialogDaysStart();//показать окно
+            lists.clear();
+            RefreshData();
         });
 
         Button but_week = root.findViewById(R.id.button_of_the_week);
         but_week.setOnClickListener(v -> {
             onDialogDWeekStart();//показать окно
+
         });
 
+        init();
+
         return root;
+
+    }
+
+    private void RefreshData() {
+
+        try {
+            fillData();
+        } catch (IOException | SQLException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void DaysInit() {
+        daysOfWeek.put("ПН", 2);
+        daysOfWeek.put("ВТ", 3);
+        daysOfWeek.put("СР", 4);
+        daysOfWeek.put("ЧТ", 5);
+        daysOfWeek.put("ПТ", 6);
+        daysOfWeek.put("СБ", 7);
+        daysOfWeek.put("ВС", 1);
+
 
     }
 
@@ -72,13 +108,12 @@ public class TimeTableFragment extends Fragment {
 
     private void fillData() throws IOException, SQLException, JSONException {
 
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         ExecutorService executor;
 
         executor = Executors.newFixedThreadPool(1);
 
-        Callable<ArrayList<TimeList>> callable = new Parse(lists, dayOfWeek);
+        Callable<ArrayList<TimeList>> callable = new Parse(lists, dayOfWeek, week);
 
         Future<ArrayList<TimeList>> future;
         future = executor.submit(callable);
@@ -180,6 +215,7 @@ public class TimeTableFragment extends Fragment {
         //кнопка "V"
         EllDiaWeek2.setOnClickListener(v -> {
             ((Button) root.findViewById(R.id.button_of_the_week)).setText(String.valueOf(week_actual));
+            week = String.valueOf(week_actual);
             dialogWeek.dismiss();
         });
 
@@ -201,22 +237,21 @@ public class TimeTableFragment extends Fragment {
         Button Fr_Dialog = (Button) dialogDays.findViewById(R.id.Button_days_Fr);
         Button St_Dialog = (Button) dialogDays.findViewById(R.id.Button_days_St);
 
-        butDaysOfWeek(Mn_Dialog, "Пн", dialogDays);
-        butDaysOfWeek(Ts_Dialog, "Вт", dialogDays);
-        butDaysOfWeek(Wd_Dialog, "Ср", dialogDays);
-        butDaysOfWeek(Th_Dialog, "Чт", dialogDays);
-        butDaysOfWeek(Fr_Dialog, "Пт", dialogDays);
-        butDaysOfWeek(St_Dialog, "Сб", dialogDays);
-//Возможно не будет работать
+        butDaysOfWeek(Mn_Dialog, "ПН", dialogDays);
+        butDaysOfWeek(Ts_Dialog, "ВТ", dialogDays);
+        butDaysOfWeek(Wd_Dialog, "СР", dialogDays);
+        butDaysOfWeek(Th_Dialog, "ЧТ", dialogDays);
+        butDaysOfWeek(Fr_Dialog, "ПТ", dialogDays);
+        butDaysOfWeek(St_Dialog, "СБ", dialogDays);
+            //Возможно не будет работать
         dialogDays.show();//показать окно
-
-
     }
 
     private void butDaysOfWeek(Button But, String text, Dialog dialogDays) {
 
         But.setOnClickListener(v -> {
             ((Button) root.findViewById(R.id.days_of_week)).setText(text);
+            dayOfWeek = daysOfWeek.get(text);
             dialogDays.dismiss();
         });
 
@@ -228,22 +263,22 @@ public class TimeTableFragment extends Fragment {
 
         switch (day) {
             case Calendar.MONDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Mon");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("ПН");
                 break;
             case Calendar.TUESDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Tu");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("ВТ");
                 break;
             case Calendar.WEDNESDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Wen");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("СР");
                 break;
             case Calendar.THURSDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Th");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("ЧТ");
                 break;
             case Calendar.FRIDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Fri");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("ПТ");
                 break;
             case Calendar.SATURDAY:
-                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("Su");
+                ((android.widget.Button) root.findViewById(R.id.days_of_week)).setText("СБ");
                 break;
         }
     }
