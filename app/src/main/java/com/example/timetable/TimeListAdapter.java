@@ -11,6 +11,8 @@ import com.example.sfedymob.R;
 
 import java.util.ArrayList;
 
+
+
 public class TimeListAdapter extends BaseAdapter {
 
     Context ctx;
@@ -23,6 +25,7 @@ public class TimeListAdapter extends BaseAdapter {
         lInFlater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
 
     @Override
     public int getCount() {
@@ -39,20 +42,29 @@ public class TimeListAdapter extends BaseAdapter {
         return position;
     }
 
+    static class ViewHolder  {
+        TextView titleTimeView;
+        TextView titleLessonView;
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        View view = convertView;
-        if (view == null) {
-            view = lInFlater.inflate(R.layout.timetable_list_block, parent, false);
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            convertView = lInFlater.inflate(R.layout.timetable_list_block, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.titleTimeView = (TextView) convertView.findViewById(R.id.time_box);
+            viewHolder.titleLessonView = (TextView) convertView.findViewById(R.id.lesson_box);
+            convertView.setTag(viewHolder);
         }
-
+        else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
         TimeList p = getTimeList(position);
 
-        //заполнение View
-        ((TextView) view.findViewById(R.id.time_box)).setText(p.Time);
-        ((TextView) view.findViewById(R.id.lesson_box)).setText(p.Lesson);
-        return view;
+        viewHolder.titleLessonView.setText(p.Lesson);
+        viewHolder.titleTimeView.setText(p.Time);
+
+        return convertView;
     }
 
     TimeList getTimeList(int position) {

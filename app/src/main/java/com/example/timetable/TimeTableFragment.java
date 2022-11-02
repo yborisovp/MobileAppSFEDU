@@ -38,7 +38,7 @@ public class TimeTableFragment extends Fragment {
     private int week_actual;
     private Calendar calendar;
     private ListView ListTimeBox;
-    private String week;
+    private String week = "9";
     private boolean Changed = false;
 
     Integer dayOfWeek;
@@ -59,8 +59,6 @@ public class TimeTableFragment extends Fragment {
         Button but_days_of_week = root.findViewById(R.id.days_of_week);
         but_days_of_week.setOnClickListener(v -> {
             onDialogDaysStart();//показать окно
-            lists.clear();
-            RefreshData();
         });
 
         Button but_week = root.findViewById(R.id.button_of_the_week);
@@ -75,14 +73,7 @@ public class TimeTableFragment extends Fragment {
 
     }
 
-    private void RefreshData() {
 
-        try {
-            fillData();
-        } catch (IOException | SQLException | JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void DaysInit() {
         daysOfWeek.put("ПН", 2);
@@ -216,6 +207,8 @@ public class TimeTableFragment extends Fragment {
         EllDiaWeek2.setOnClickListener(v -> {
             ((Button) root.findViewById(R.id.button_of_the_week)).setText(String.valueOf(week_actual));
             week = String.valueOf(week_actual);
+            lists.clear();
+            RefreshData();
             dialogWeek.dismiss();
         });
 
@@ -246,12 +239,20 @@ public class TimeTableFragment extends Fragment {
             //Возможно не будет работать
         dialogDays.show();//показать окно
     }
-
+    private void RefreshData() {
+        try {
+            fillData();
+        } catch (IOException | SQLException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
     private void butDaysOfWeek(Button But, String text, Dialog dialogDays) {
 
         But.setOnClickListener(v -> {
             ((Button) root.findViewById(R.id.days_of_week)).setText(text);
             dayOfWeek = daysOfWeek.get(text);
+            lists.clear();
+            RefreshData();
             dialogDays.dismiss();
         });
 
